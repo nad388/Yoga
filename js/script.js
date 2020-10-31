@@ -4,20 +4,20 @@ window.addEventListener('DOMContentLoaded', function () {
         info = document.querySelector('.info-header'),
         tabContent = document.querySelectorAll('.info-tabcontent');
 
-    function hideTabContent(a) {
+    const hideTabContent = (a) => {
         for (let i = a; i < tabContent.length; i++) {
             tabContent[i].classList.remove('show');
             tabContent[i].classList.add('hide');
         }
-    }
+    };
     hideTabContent(1);
 
-    function showTabContent(b) {
+    const showTabContent = (b) => {
         if (tabContent[b].classList.contains('hide')) {
             tabContent[b].classList.remove('hide');
             tabContent[b].classList.add('show');
         }
-    }
+    };
 
     info.addEventListener('click', function(event) {
         let target = event.target;
@@ -34,7 +34,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     //Timer
     let deadline = '2020-12-31';
-    function getTimeRemaining(endtime) {
+    const getTimeRemaining = (endtime) => {
         let t = Date.parse(endtime) - Date.parse(new Date()),
             seconds = Math.floor((t/1000)%60),
             minutes = Math.floor((t/1000/60)%60),
@@ -46,9 +46,9 @@ window.addEventListener('DOMContentLoaded', function () {
             'minutes' : minutes,
             'seconds' : seconds
         };
-    }
+    };
 
-    function setClock(id, endtime) {
+    const setClock = (id, endtime) => {
         let timer = document.getElementById(id),
             hours = timer.querySelector('.hours'),
             minutes = timer.querySelector('.minutes'),
@@ -58,7 +58,7 @@ window.addEventListener('DOMContentLoaded', function () {
         function updateClock() {
             let t = getTimeRemaining(endtime);
 
-            function addZero(num) {
+            let addZero = (num) => {
                 if (num <= 9) {
                     return '0' + num;
                 } else return num; 
@@ -75,7 +75,7 @@ window.addEventListener('DOMContentLoaded', function () {
             }
         }
         
-    }
+    };
     setClock('timer', deadline);
 
     //Modal
@@ -106,3 +106,22 @@ window.addEventListener('DOMContentLoaded', function () {
         document.body.style.overflow = '';
     });
 });
+
+/*class Options {
+    constructor(height, width, bg, fontSize, textAlign) {
+        this.height = height;
+        this.width = width;
+        this.bg = bg;
+        this.fontSize = fontSize;
+        this.textAlign = textAlign;
+    }
+    createDiv() {
+        let elem = document.createElement('div');
+        document.body.appendChild(elem);
+        let param = `height:${this.height}px; width:${this.width}px; background-color:${this.bg}; font-size:${this.fontSize}px; text-align:${this.textAlign}`;
+        elem.style.cssText = param;
+    }
+}
+const item = new Options(300, 350, "red", 14, "center");
+
+item.createDiv();*/
