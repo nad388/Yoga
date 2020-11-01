@@ -245,6 +245,19 @@ window.addEventListener('DOMContentLoaded', function () {
             totalValue.innerHTML = a * this.options[this.selectedIndex].value;
         }
     });
+
+    persons.addEventListener("change", function() {
+        if (restDays.value == "" || restDays.value == 0 || persons.value == "" || persons.value == 0) {
+            totalValue.textContent = 0;
+        }
+    });
+
+    restDays.addEventListener("change", function() {
+        if (restDays.value == "" || restDays.value == 0 || persons.value == "" || persons.value == 0) {
+            totalValue.textContent = 0;
+        }
+    });
+
      
 });
 
